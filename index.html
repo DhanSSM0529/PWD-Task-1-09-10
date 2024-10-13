@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylized Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Stylized Calculator</h1>
+        <form action="/calculate" method="POST">
+            <input type="text" name="number1" placeholder="Enter first number" required><br>
+            <input type="text" name="number2" placeholder="Enter second number" required><br>
+
+            <label>Select Operation:</label>
+            <input type="radio" name="operation" value="add" required> Add (+)<br>
+            <input type="radio" name="operation" value="subtract" required> Subtract (-)<br>
+            <input type="radio" name="operation" value="multiply" required> Multiply (×)<br>
+            <input type="radio" name="operation" value="divide" required> Divide (÷)<br><br>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if result is not none %}
+        <div class="result">
+            <h2>Result: {{ result }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
